@@ -1,5 +1,9 @@
 package com.example.demon.entity;
 
+import com.example.demon.common.Role;
+
+import org.hibernate.annotations.Comment;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,5 +23,20 @@ import lombok.Setter;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Comment("유저ID")
     private Long userId;
+
+    private String userEmail;
+
+    private String userPw;
+
+    private String userName;
+
+    private String userPhone;
+
+    private String userProfile;
+
+    private Role role;
+
+    private Long activateStatus;
 }

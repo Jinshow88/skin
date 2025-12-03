@@ -1,0 +1,181 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.5.8'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	// implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	// implementation 'org.springframework.boot:spring-boot-starter-mail'
+	// implementation 'org.springframework.boot:spring-boot-starter-validation'
+	// implementation 'org.springframework.boot:spring-boot-starter-web'
+	// implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.5'
+	// compileOnly 'org.projectlombok:lombok'
+	// developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	// runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+	// annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+	// annotationProcessor 'org.projectlombok:lombok'
+	// providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	// testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.5'
+	// testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	
+    /* ============================================================
+     *  인증 / 보안
+     * ============================================================ */
+
+    // OAuth 2.0 소셜 로그인 (Google / Kakao / Naver 로그인)
+    // implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+    // Spring Security (로그인/로그아웃/권한/필터 등 보안 기능)
+    // implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // JWT 토큰 처리 (API / Impl / JSON Serializer)
+    // implementation 'io.jsonwebtoken:jjwt-api:0.12.5'
+    // runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.5'
+    // runtimeOnly 'io.jsonwebtoken:jjwt-gson:0.12.5'
+
+    // 비밀번호 암호화 BCrypt
+    implementation 'org.mindrot:jbcrypt:0.4'
+
+
+    /* ============================================================
+     *  웹 / API / 유효성 검증
+     * ============================================================ */
+
+    // Spring Web (REST API, MVC, 내장 Tomcat 포함)
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // 입력값 검증 (@NotNull, @Email 등)
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+
+    /* ============================================================
+     *  데이터베이스 (JPA + MyBatis)
+     * ============================================================ */
+
+    // JPA + Hibernate
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // JDBC Template
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+    // MyBatis (3.0.5 최신 버전 사용)
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.5'
+    testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.5'
+
+    // MariaDB Driver
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+
+    // SQL 디버깅용: 실행되는 모든 SQL + 파라미터 출력
+    implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+
+
+    /* ============================================================
+     *  공간정보(GIS) 기능 (지도 좌표 계산)
+     * ============================================================ */
+
+    // Hibernate Spatial (좌표/거리/반경 검색 지원)
+    implementation 'org.hibernate.orm:hibernate-spatial:6.5.2.Final'
+
+    // Hibernate Core 명시 버전
+    implementation 'org.hibernate.orm:hibernate-core:6.5.2.Final'
+
+    // JTS 좌표 처리 라이브러리 (거리 계산, 면적, 교차 여부 등)
+    implementation 'org.locationtech.jts:jts-core:1.18.2'
+
+
+    /* ============================================================
+     *  이메일 발송
+     * ============================================================ */
+
+    // Spring Boot 이메일 발송 (SMTP)
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+
+    // JavaMail API (Spring Boot 3.x에서는 비권장, 그러나 필요 시 유지)
+    implementation 'javax.mail:mail:1.4.7'
+
+    // 메일 템플릿 + 리소스 로딩 (Spring Old Support) - 필요 시 유지
+    implementation 'org.springframework:spring-context-support:5.3.9'
+
+
+    /* ============================================================
+     *  JSON 처리
+     * ============================================================ */
+
+    // 간단한 JSON 파서 (가벼운 JSON 변환)
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+
+
+    /* ============================================================
+     *  환경 변수(.env) 읽기
+     * ============================================================ */
+
+    // .env 파일 읽기 (Java 용)
+    implementation 'io.github.cdimascio:dotenv-java:2.2.0'
+
+    // Spring에서 .env 사용 가능하게 해주는 확장
+    implementation 'me.paulschwarz:spring-dotenv:4.0.0'
+
+
+    /* ============================================================
+     *  Spring Boot 개발 편의 기능
+     * ============================================================ */
+
+    // 개발 시 자동 재시작 (DevTools)
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // (WAR 빌드 시 필요) providedRuntime Tomcat → JAR 프로젝트에서는 필요 없음
+    // 삭제 추천: providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+
+
+    /* ============================================================
+     *  API 문서 (Swagger / OpenAPI)
+     * ============================================================ */
+
+    // Swagger UI 자동 생성 (localhost:8080/swagger-ui.html)
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
+
+
+    /* ============================================================
+     *  Lombok
+     * ============================================================ */
+
+    // Lombok (Getter/Setter/Builder 자동 생성)
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // application.yml 자동 완성 지원
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+
+    /* ============================================================
+     *  테스트
+     * ============================================================ */
+
+    // Spring Boot 기본 테스트
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // Spring Security 테스트
+    testImplementation 'org.springframework.security:spring-security-test'
+
+    // JUnit 플랫폼 런처
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

@@ -1,0 +1,22 @@
+package com.example.demon.service.implement;
+import org.springframework.stereotype.Service;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class GlampingServiceImpl {
+    
+    // 지도용 글램핑 리스트 검색 + 가격 세팅
+
+    // 검색 조건(날짜/필터/정렬)으로 글램핑 리스트/개수 조회
+
+    // 관심(찜) 토글 기능
+
+    // 글램핑 상세 + 객실 + 리뷰 + 서비스 + 찜 여부 + 예약 가능 여부
+
+    // 상세 페이지의 리뷰 탭 정보(리뷰, 객실 이름, 이미지)
+    // 리뷰 이미지 더보기
+
+    // 객실별 이미지 리스트(맵 구조) 반환
+}

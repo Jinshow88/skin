@@ -21,49 +21,51 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "user")
-public class UserEntity {
+@Table(name = "Owner")
+public class OwnerEntity extends UpdatedAt {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Comment("유저 ID")
-    private Long userId;
+    @Comment("사업자 유저 ID")
+    private Long ownerId;
+
+    @Column(length = 12, nullable = false, unique = true)
+    @Comment("사업자 등록 번호")
+    private String businessNumber;
 
     @Column(length = 50, nullable = false, unique = true)
-    @Comment("유저 이메일")
-    private String userEmail;
+    @Comment("사장님 이메일")
+    private String ownerEmail;
 
     @Column(length = 70, nullable = false)
-    @Comment("쿠폰 ID")
-    private String userPw;
+    @Comment("사장님 비밀번호")
+    private String ownerPw;
 
     @Column(length = 50, nullable = false)
-    @Comment("유저 실명")
-    private String userName;
-
-    @Column(length = 30, nullable = false, unique = true)
-    @Comment("유저 닉네임")
-    private String userNickname;
+    @Comment("대표자명")
+    private String ownerName;
 
     @Column(length = 11)
-    @Comment("유저 휴대폰 번호")
-    private String userPhone;
-
-    @Column(length = 200)
-    @Comment("유저 프로필 이미지")
-    private String userProfileImage;
+    @Comment("대표자 전화번호")
+    private String ownerPhone;
 
     @Column(length = 20, nullable = false)
+    @Comment("권한")
     // @Convert(converter = RoleConverter.class)
-    @Comment("유저 권한")
     private Role role;
 
-    @Column(length = 50)
-    @Comment("소셜 유저 ID")
-    private String providerId;
-
-    @Column(columnDefinition = "TINYINT")
+    @Column(nullable = false)
     @ColumnDefault("1")
-    @Comment("회원 탈퇴시 -1")
+    @Comment("회원 탈퇴 시 -1")
     private Integer activateStatus;
+
+    @Column(length = 100)
+    @Comment("사업자 등록증")
+    private String businessPaperImage;
+
+    @Column(nullable = false)
+    @ColumnDefault("1")
+    @Comment("글램핑 정상 등록 완료 = 1")
+    private Integer glampingStatus;
 
 }

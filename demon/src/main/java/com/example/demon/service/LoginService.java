@@ -1,6 +1,7 @@
 package com.example.demon.service;
 
-import com.example.demon.dto.request.LoginRequest;
+import com.example.demon.dto.request.login.OwnerSignUpRequest;
+import com.example.demon.dto.request.login.UserSignUpRequest;
 import com.example.demon.dto.response.LoginResponse;
 
 import org.springframework.http.ResponseEntity;
@@ -14,12 +15,12 @@ public interface LoginService {
     // int createKey();
 
     // 로그인 및 회원가입 페이지 - 이메일 회원가입 처리 //
-    ResponseEntity<LoginResponse> postLogin(LoginRequest dto);
+    ResponseEntity<LoginResponse> postLogin(UserSignUpRequest dto);
 
     // 로그인 및 회원가입 페이지 - 소셜 회원가입 처리 //
 
     // 로그인 및 회원가입 페이지 - 사장님 회원가입 처리 //
-    ResponseEntity<LoginResponse> ownerSignUp(LoginRequest dto);
+    ResponseEntity<LoginResponse> ownerSignUp(OwnerSignUpRequest dto);
     // 로그인 및 회원가입 페이지 - 이메일 로그인 처리 //
 
     // 로그인 및 회원가입 페이지 - 사장님 로그인 처리 //

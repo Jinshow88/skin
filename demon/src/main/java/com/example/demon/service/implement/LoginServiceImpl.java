@@ -1,7 +1,8 @@
 package com.example.demon.service.implement;
 
 import com.example.demon.common.Role;
-import com.example.demon.dto.request.LoginRequest;
+import com.example.demon.dto.request.login.OwnerSignUpRequest;
+import com.example.demon.dto.request.login.UserSignUpRequest;
 import com.example.demon.dto.response.LoginResponse;
 import com.example.demon.entity.OwnerEntity;
 import com.example.demon.entity.UserEntity;
@@ -27,7 +28,7 @@ public class LoginServiceImpl implements LoginService {
     // 로그인 및 회원가입 페이지 - 이메일 회원가입 처리 //
     @Override
     @Transactional
-    public ResponseEntity<LoginResponse> postLogin(LoginRequest dto) {
+    public ResponseEntity<LoginResponse> postLogin(UserSignUpRequest dto) {
         UserEntity userEntity = new UserEntity();
         userEntity.setUserName(dto.getUserName());
         userEntity.setUserPw(dto.getUserPw());
@@ -46,18 +47,18 @@ public class LoginServiceImpl implements LoginService {
     // 로그인 및 회원가입 페이지 - 사장님 회원가입 처리 //
     @Override
     @Transactional
-    public ResponseEntity<LoginResponse> ownerSignUp(LoginRequest dto) {
+    public ResponseEntity<LoginResponse> ownerSignUp(OwnerSignUpRequest dto) {
         OwnerEntity ownerEntity = new OwnerEntity();
         ownerEntity.setActivateStatus(1);
         ownerEntity.setBusinessNumber(dto.getBusinessNumber());
         ownerEntity.setBusinessPaperImage(dto.getBusinessPaper());
         ownerEntity.setGlampingStatus(1);
-        ownerEntity.setOwnerEmail(dto.getUserEmail());
-        ownerEntity.setOwnerName(dto.getUserName());
-        ownerEntity.setOwnerPhone(dto.getUserPhone());
-        ownerEntity.setOwnerPw(dto.getUserPw());
+        ownerEntity.setOwnerEmail(dto.getOwnerEmail());
+        ownerEntity.setOwnerName(dto.getOwnerName());
+        ownerEntity.setOwnerPhone(dto.getOwnerPhone());
+        ownerEntity.setOwnerPw(dto.getOwnerPw());
         ownerEntity.setRole(Role.ROLE_OWNER);
-        
+
         ownerEntity = ownerRepositroy.save(ownerEntity);
 
         return LoginResponse.success(ownerEntity);

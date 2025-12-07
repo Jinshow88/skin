@@ -3,10 +3,11 @@ package com.example.demon.service.implement;
 import com.example.demon.common.Role;
 import com.example.demon.dto.request.login.OwnerSignUpRequest;
 import com.example.demon.dto.request.login.UserSignUpRequest;
-import com.example.demon.dto.response.LoginResponse;
+import com.example.demon.dto.response.login.OwnerSignUpResponse;
+import com.example.demon.dto.response.login.UserSignUpResponse;
 import com.example.demon.entity.OwnerEntity;
 import com.example.demon.entity.UserEntity;
-import com.example.demon.repository.OwnerRepositroy;
+import com.example.demon.repository.OwnerRepository;
 import com.example.demon.repository.UserRepository;
 import com.example.demon.service.LoginService;
 
@@ -20,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class LoginServiceImpl implements LoginService {
     private final UserRepository userRepository;
-    private final OwnerRepositroy ownerRepositroy;
+    private final OwnerRepository ownerRepositroy;
     // 최초 실행 시, 초기화를 한번만 진행 //
 
     // 6자리의 랜덤 숫자코드를 생성 //
@@ -28,7 +29,7 @@ public class LoginServiceImpl implements LoginService {
     // 로그인 및 회원가입 페이지 - 이메일 회원가입 처리 //
     @Override
     @Transactional
-    public ResponseEntity<LoginResponse> postLogin(UserSignUpRequest dto) {
+    public ResponseEntity<UserSignUpResponse> postSignUp(UserSignUpRequest dto) {
         UserEntity userEntity = new UserEntity();
         userEntity.setUserName(dto.getUserName());
         userEntity.setUserPw(dto.getUserPw());
@@ -40,14 +41,14 @@ public class LoginServiceImpl implements LoginService {
         userEntity.setUserProfileImage(dto.getUserProfile());
 
         userEntity = userRepository.save(userEntity);
-        return LoginResponse.success(userEntity);
+        return UserSignUpResponse.success(userEntity);
     }
     // 로그인 및 회원가입 페이지 - 소셜 회원가입 처리 //
 
     // 로그인 및 회원가입 페이지 - 사장님 회원가입 처리 //
     @Override
     @Transactional
-    public ResponseEntity<LoginResponse> ownerSignUp(OwnerSignUpRequest dto) {
+    public ResponseEntity<OwnerSignUpResponse> ownerSignUp(OwnerSignUpRequest dto) {
         OwnerEntity ownerEntity = new OwnerEntity();
         ownerEntity.setActivateStatus(1);
         ownerEntity.setBusinessNumber(dto.getBusinessNumber());
@@ -61,7 +62,7 @@ public class LoginServiceImpl implements LoginService {
 
         ownerEntity = ownerRepositroy.save(ownerEntity);
 
-        return LoginResponse.success(ownerEntity);
+        return OwnerSignUpResponse.success(ownerEntity);
     }
 
     // 로그인 및 회원가입 페이지 - 이메일 로그인 처리 //

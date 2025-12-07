@@ -62,7 +62,7 @@ public class GlampingEntity extends UpdatedAt {
     @Column(nullable = false)
     @ColumnDefault("0")
     @Comment("리뷰 수")
-    private Integer reviewCount;
+    private Long reviewCount;
 
     @Column(length = 50, nullable = false)
     @Comment("글램핑 위치")

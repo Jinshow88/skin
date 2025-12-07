@@ -8,5 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ReviewRepository extends JpaRepository<ReviewEntity, Long>{
 
-    
+
+
+long countByGlampId_GlampId(Long glampId);
 } 

@@ -1,7 +1,7 @@
 package com.example.demon.controller;
 
-import com.example.demon.dto.request.BookRequest;
-import com.example.demon.dto.response.BookResponse;
+import com.example.demon.dto.request.BookPostRequest;
+import com.example.demon.dto.response.book.BookPostResponse;
 import com.example.demon.service.BookService;
 
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,7 @@ public class BookController {
     private final BookService bookService;
 
     @PostMapping
-    public ResponseEntity<BookResponse> postBook(@RequestBody BookRequest dto) {
+    public ResponseEntity<BookPostResponse> postBook(@RequestBody BookPostRequest dto) {
 
         return bookService.postBook(dto);
     }

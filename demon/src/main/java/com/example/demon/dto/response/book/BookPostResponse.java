@@ -1,4 +1,4 @@
-package com.example.demon.dto.response;
+package com.example.demon.dto.response.book;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,10 +8,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class BookResponse {
+public class BookPostResponse {
 
-    public static ResponseEntity<BookResponse> success(){
-        BookResponse result = new BookResponse();
+    public static ResponseEntity<BookPostResponse> success(){
+        BookPostResponse result = new BookPostResponse();
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 }

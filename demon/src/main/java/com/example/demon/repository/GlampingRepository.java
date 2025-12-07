@@ -1,10 +1,12 @@
 package com.example.demon.repository;
 
-import com.example.demon.entity.OwnerEntity;
+import com.example.demon.entity.GlampingEntity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
 @Repository
-public interface OwnerRepositroy extends JpaRepository<OwnerEntity, Long> {
+
+public interface GlampingRepository extends JpaRepository<GlampingEntity, Long> {
 
 }

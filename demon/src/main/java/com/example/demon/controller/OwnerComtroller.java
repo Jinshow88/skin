@@ -1,23 +1,43 @@
-package com.example.demon.service;
+package com.example.demon.controller;
 
 import com.example.demon.dto.request.owner.GlampingPostRequest;
 import com.example.demon.dto.request.owner.RoomPostRequest;
 import com.example.demon.dto.response.owner.GlampingPostResponse;
 import com.example.demon.dto.response.owner.RoomPostResponse;
+import com.example.demon.service.OwnerService;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-public interface OwnerService {
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/api/owner")
+@Tag(name = "사장")
+public class OwnerComtroller {
+
+    private final OwnerService ownerService;
     // 글램핑 등록
-    ResponseEntity<GlampingPostResponse> postGlamping(GlampingPostRequest dto);
+    @PostMapping("/post_Glamping")
+    public ResponseEntity<GlampingPostResponse> postGlamping(@RequestBody GlampingPostRequest dto){
+        return ownerService.postGlamping(dto);
+    }
 
     // 글램핑 수정
 
     // 글램핑 사진 수정
 
     // 객실 등록
-    ResponseEntity<RoomPostResponse> postRoom(RoomPostRequest dto);
+    @PostMapping("/post_Room")
+    public ResponseEntity<RoomPostResponse> postRoom(@RequestBody RoomPostRequest dto){
+        return ownerService.postRoom(dto);
+    }
+
 
     // 객실 수정
 

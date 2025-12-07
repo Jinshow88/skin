@@ -2,7 +2,8 @@ package com.example.demon.controller;
 
 import com.example.demon.dto.request.login.OwnerSignUpRequest;
 import com.example.demon.dto.request.login.UserSignUpRequest;
-import com.example.demon.dto.response.LoginResponse;
+import com.example.demon.dto.response.login.OwnerSignUpResponse;
+import com.example.demon.dto.response.login.UserSignUpResponse;
 import com.example.demon.service.LoginService;
 
 import org.springframework.http.ResponseEntity;
@@ -26,15 +27,15 @@ public class LoginController {
 
     // 로그인 및 회원가입 페이지 - 이메일 회원가입 처리 //
 
-    @PostMapping("/login")
-    public ResponseEntity<LoginResponse> postLogin(@RequestBody UserSignUpRequest dto) {
-        return loginService.postLogin(dto);
+    @PostMapping("/user_sign_up")
+    public ResponseEntity<UserSignUpResponse> postSignUp(@RequestBody UserSignUpRequest dto) {
+        return loginService.postSignUp(dto);
     }
     // 로그인 및 회원가입 페이지 - 소셜 회원가입 처리 //
 
     // 로그인 및 회원가입 페이지 - 사장님 회원가입 처리 //
     @PostMapping("/owner_sign_up")
-    public ResponseEntity<LoginResponse> ownerSignUp(@RequestBody OwnerSignUpRequest dto) {
+    public ResponseEntity<OwnerSignUpResponse> ownerSignUp(@RequestBody OwnerSignUpRequest dto) {
         return loginService.ownerSignUp(dto);
     }
     // 로그인 및 회원가입 페이지 - 이메일 로그인 처리 //

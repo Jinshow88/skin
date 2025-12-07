@@ -32,7 +32,7 @@ public class RoomEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "glamp_id", nullable = false)
     @Comment("글램핑 ID")
-    private GlampingEntity glamp;
+    private GlampingEntity glampId;
 
     @Column(length = 30, nullable = false)
     @Comment("객실명")

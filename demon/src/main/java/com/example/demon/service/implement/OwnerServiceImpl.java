@@ -68,6 +68,47 @@ public class OwnerServiceImpl implements OwnerService {
     @Override
     @Transactional
     public ResponseEntity<GlampingUpdateResponse> updateGlamping(GlampingUpdateRequest dto) {
+        //수정 해야 할것 glampImage, glampName, glampCall, glampIntro, glampLocation, infoBasic, infoNotice
+        GlampingEntity glamping = glampingRepository.findById(dto.getGlampId())
+        .orElseThrow(() -> new RuntimeException("영업장이 없습니다."));
+
+        //대표이미지 교체
+        if (dto.getGlampImage() != null && !dto.getGlampImage().isEmpty()) {
+            glamping.setGlampImage(dto.getGlampImage());
+        }
+
+        //매장 이름 변경
+        if (dto.getGlampName() != null && !dto.getGlampName().isEmpty()) {
+            glamping.setGlampName(dto.getGlampName());
+        }
+
+        //매장 번호 변경
+        if (dto.getGlampCall() != null && !dto.getGlampCall().isEmpty()) {
+            glamping.setGlampCall(dto.getGlampCall());
+        }
+
+        //매장 소개 변경
+        if (dto.getGlampIntro() != null && !dto.getGlampIntro().isEmpty()) {
+            glamping.setGlampIntro(dto.getGlampIntro());
+        }
+
+        //매장 주소 변경
+        if (dto.getGlampLocation() != null && !dto.getGlampLocation().isEmpty()) {
+            glamping.setGlampLocation(dto.getGlampLocation());
+        }
+
+        //기본 정보 변경
+        if (dto.getInfoBasic() != null && !dto.getInfoBasic().isEmpty()) {
+            glamping.setInfoBasic(dto.getInfoBasic());
+        }
+
+        //주의 사항
+        if (dto.getInfoNotice() != null && !dto.getInfoNotice().isEmpty()) {
+            glamping.setInfoNotice(dto.getInfoNotice());
+        }
+
+
+
         return GlampingUpdateResponse.success();
     }
 

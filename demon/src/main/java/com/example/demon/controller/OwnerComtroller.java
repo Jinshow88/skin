@@ -34,7 +34,7 @@ public class OwnerComtroller {
     }
 
     // 글램핑 수정
-    @PutMapping
+    @PutMapping("update_Glamping")
     public ResponseEntity<GlampingUpdateResponse> updateGlamping( GlampingUpdateRequest dto){
         return ownerService.updateGlamping(dto);
     }
@@ -49,7 +49,7 @@ public class OwnerComtroller {
 
 
     // 객실 수정
-    @PutMapping
+    @PutMapping("update_Room")
     public ResponseEntity<RoomUpdateResponse> updateRoom( RoomUpdateRequest dto){
         return ownerService.updateRoom(dto);
     }

@@ -1,5 +1,7 @@
 package com.example.demon.service.implement;
 
+import java.util.Objects;
+
 import com.example.demon.dto.objest.owner.GlampingPostObjest;
 import com.example.demon.dto.objest.owner.RoomPostObjest;
 import com.example.demon.dto.request.owner.GlampingPostRequest;
@@ -38,7 +40,7 @@ public class OwnerServiceImpl implements OwnerService {
     @Override
     @Transactional
     public ResponseEntity<GlampingPostResponse> postGlamping(GlampingPostRequest dto) {
-        OwnerEntity owner = ownerRepository.findById(dto.getOwnerId())
+        OwnerEntity owner = ownerRepository.findById(Objects.requireNonNull(dto.getOwnerId(), "오너 ID는 필수입니다."))
                 .orElseThrow(() -> new RuntimeException("사장 정보 없음"));
         GlampingEntity glampingEntity = new GlampingEntity();
         glampingEntity.setOwner(owner);
@@ -69,7 +71,7 @@ public class OwnerServiceImpl implements OwnerService {
     @Transactional
     public ResponseEntity<GlampingUpdateResponse> updateGlamping(GlampingUpdateRequest dto) {
         //수정 해야 할것 glampImage, glampName, glampCall, glampIntro, glampLocation, infoBasic, infoNotice
-        GlampingEntity glamping = glampingRepository.findById(dto.getGlampId())
+        GlampingEntity glamping = glampingRepository.findById(Objects.requireNonNull(dto.getGlampId(), "글램핑 ID는 필수입니다."))
         .orElseThrow(() -> new RuntimeException("영업장이 없습니다."));
 
         //대표이미지 교체
@@ -118,7 +120,7 @@ public class OwnerServiceImpl implements OwnerService {
     @Override
     @Transactional
     public ResponseEntity<RoomPostResponse> postRoom(RoomPostRequest dto) {
-        GlampingEntity glamping = glampingRepository.findById(dto.getGlampId())
+        GlampingEntity glamping = glampingRepository.findById(Objects.requireNonNull(dto.getGlampId(), "글램핑 ID는 필수입니다."))
                 .orElseThrow(() -> new RuntimeException("글램핑 정보 없음"));
         RoomEntity roomEntity = new RoomEntity();
         roomEntity.setGlampId(glamping);

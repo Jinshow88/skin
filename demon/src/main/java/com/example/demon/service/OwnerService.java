@@ -1,9 +1,13 @@
 package com.example.demon.service;
 
 import com.example.demon.dto.request.owner.GlampingPostRequest;
+import com.example.demon.dto.request.owner.GlampingUpdateRequest;
 import com.example.demon.dto.request.owner.RoomPostRequest;
+import com.example.demon.dto.request.owner.RoomUpdateRequest;
 import com.example.demon.dto.response.owner.GlampingPostResponse;
+import com.example.demon.dto.response.owner.GlampingUpdateResponse;
 import com.example.demon.dto.response.owner.RoomPostResponse;
+import com.example.demon.dto.response.owner.RoomUpdateResponse;
 
 import org.springframework.http.ResponseEntity;
 
@@ -13,6 +17,7 @@ public interface OwnerService {
     ResponseEntity<GlampingPostResponse> postGlamping(GlampingPostRequest dto);
 
     // 글램핑 수정
+    ResponseEntity<GlampingUpdateResponse> updateGlamping(GlampingUpdateRequest dto);
 
     // 글램핑 사진 수정
 
@@ -20,6 +25,7 @@ public interface OwnerService {
     ResponseEntity<RoomPostResponse> postRoom(RoomPostRequest dto);
 
     // 객실 수정
+    ResponseEntity<RoomUpdateResponse> updateRoom(RoomUpdateRequest dto);
 
     // 객실 삭제
 

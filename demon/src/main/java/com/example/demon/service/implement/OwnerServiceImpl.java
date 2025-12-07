@@ -3,9 +3,13 @@ package com.example.demon.service.implement;
 import com.example.demon.dto.objest.owner.GlampingPostObjest;
 import com.example.demon.dto.objest.owner.RoomPostObjest;
 import com.example.demon.dto.request.owner.GlampingPostRequest;
+import com.example.demon.dto.request.owner.GlampingUpdateRequest;
 import com.example.demon.dto.request.owner.RoomPostRequest;
+import com.example.demon.dto.request.owner.RoomUpdateRequest;
 import com.example.demon.dto.response.owner.GlampingPostResponse;
+import com.example.demon.dto.response.owner.GlampingUpdateResponse;
 import com.example.demon.dto.response.owner.RoomPostResponse;
+import com.example.demon.dto.response.owner.RoomUpdateResponse;
 import com.example.demon.entity.GlampingEntity;
 import com.example.demon.entity.OwnerEntity;
 import com.example.demon.entity.RoomEntity;
@@ -61,6 +65,11 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     // 글램핑 수정
+    @Override
+    @Transactional
+    public ResponseEntity<GlampingUpdateResponse> updateGlamping(GlampingUpdateRequest dto) {
+        return GlampingUpdateResponse.success();
+    }
 
     // 글램핑 사진 수정
 
@@ -86,6 +95,11 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     // 객실 수정
+    @Override
+    @Transactional
+    public ResponseEntity<RoomUpdateResponse> updateRoom(RoomUpdateRequest dto) {
+        return RoomUpdateResponse.success();
+    }
 
     // 객실 삭제
 

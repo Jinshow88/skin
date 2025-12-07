@@ -1,13 +1,18 @@
 package com.example.demon.controller;
 
 import com.example.demon.dto.request.owner.GlampingPostRequest;
+import com.example.demon.dto.request.owner.GlampingUpdateRequest;
 import com.example.demon.dto.request.owner.RoomPostRequest;
+import com.example.demon.dto.request.owner.RoomUpdateRequest;
 import com.example.demon.dto.response.owner.GlampingPostResponse;
+import com.example.demon.dto.response.owner.GlampingUpdateResponse;
 import com.example.demon.dto.response.owner.RoomPostResponse;
+import com.example.demon.dto.response.owner.RoomUpdateResponse;
 import com.example.demon.service.OwnerService;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,6 +34,10 @@ public class OwnerComtroller {
     }
 
     // 글램핑 수정
+    @PutMapping
+    public ResponseEntity<GlampingUpdateResponse> updateGlamping( GlampingUpdateRequest dto){
+        return ownerService.updateGlamping(dto);
+    }
 
     // 글램핑 사진 수정
 
@@ -40,6 +49,10 @@ public class OwnerComtroller {
 
 
     // 객실 수정
+    @PutMapping
+    public ResponseEntity<RoomUpdateResponse> updateRoom( RoomUpdateRequest dto){
+        return ownerService.updateRoom(dto);
+    }
 
     // 객실 삭제
 
